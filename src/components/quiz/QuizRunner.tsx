@@ -35,8 +35,8 @@ export function QuizRunner({
         <DifficultyBadge difficulty={question.difficulty} />
       </div>
 
-      <h2 className="text-lg font-medium text-gray-100">{question.title}</h2>
-      <p className="mt-2 text-sm text-gray-400">{question.question}</p>
+      <h2 className="text-lg font-medium break-words text-gray-100">{question.title}</h2>
+      <p className="mt-2 text-sm break-words text-gray-400">{question.question}</p>
 
       <div className="mt-5 flex flex-col gap-2.5">
         {quiz.options.map((option, i) => {
@@ -58,7 +58,7 @@ export function QuizRunner({
               onClick={() => onSelect(i)}
               className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 text-left text-sm text-gray-200 transition ${stateClasses}`}
             >
-              <span>{option}</span>
+              <span className="break-words">{option}</span>
               {hasAnswered && isCorrect && <CheckCircle2 size={18} className="shrink-0 text-emerald-400" />}
               {hasAnswered && isSelected && !isCorrect && <XCircle size={18} className="shrink-0 text-red-400" />}
             </button>
@@ -67,7 +67,7 @@ export function QuizRunner({
       </div>
 
       {hasAnswered && (
-        <div className="mt-5 rounded-lg bg-white/5 p-4 text-sm text-gray-400">
+        <div className="mt-5 rounded-lg bg-white/5 p-4 text-sm break-words text-gray-400">
           <p className="mb-1 font-medium text-gray-300">Explanation</p>
           {question.explanation}
         </div>

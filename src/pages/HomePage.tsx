@@ -49,7 +49,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={Code2} label="Total questions" value={questions.length} />
         <StatCard icon={Target} label="Completed" value={completed.length} accent="text-emerald-400" />
         <StatCard icon={BookMarked} label="Bookmarked" value={bookmarked.length} accent="text-amber-400" />

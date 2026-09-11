@@ -35,8 +35,8 @@ export function FilterBar({
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <div className="flex items-center gap-1.5 rounded-lg border border-border-subtle bg-black/20 p-1">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+        <div className="flex flex-wrap items-center gap-1.5 rounded-lg border border-border-subtle bg-black/20 p-1">
           {difficulties.map((d) => (
             <button
               key={d}
@@ -54,7 +54,7 @@ export function FilterBar({
         <select
           value={category}
           onChange={(e) => onCategoryChange(e.target.value)}
-          className="rounded-lg border border-border-subtle bg-black/20 px-3 py-2 text-sm text-gray-200 outline-none focus:border-brand-500"
+          className="w-full rounded-lg border border-border-subtle bg-black/20 px-3 py-2 text-sm text-gray-200 outline-none focus:border-brand-500 sm:w-auto"
         >
           <option value="All">All categories</option>
           {categories.map((c) => (

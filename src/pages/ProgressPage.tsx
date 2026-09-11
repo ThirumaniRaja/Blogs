@@ -29,7 +29,7 @@ export function ProgressPage() {
         </button>
       </div>
 
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={CheckCircle2} label="Completed" value={completed.length} accent="text-emerald-400" />
         <StatCard icon={BookMarked} label="Bookmarked" value={bookmarked.length} accent="text-amber-400" />
         <StatCard icon={Trophy} label="Quizzes taken" value={quizHistory.length} accent="text-purple-400" />
@@ -61,8 +61,11 @@ export function ProgressPage() {
         {quizHistory.length > 0 ? (
           <div className="flex flex-col divide-y divide-border-subtle">
             {quizHistory.map((attempt) => (
-              <div key={attempt.id} className="flex items-center justify-between py-3 text-sm">
-                <div>
+              <div
+                key={attempt.id}
+                className="flex flex-col gap-1 py-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-2"
+              >
+                <div className="min-w-0">
                   <p className="text-gray-200">
                     {attempt.correct} / {attempt.total} correct
                   </p>

@@ -35,8 +35,8 @@ export function QuestionDetailPage() {
           </span>
         </div>
 
-        <h1 className="mt-4 text-2xl font-semibold text-gray-50">{question.title}</h1>
-        <p className="mt-3 text-gray-300">{question.question}</p>
+        <h1 className="mt-4 text-2xl font-semibold break-words text-gray-50">{question.title}</h1>
+        <p className="mt-3 break-words text-gray-300">{question.question}</p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {question.tags.map((tag) => (
@@ -62,7 +62,7 @@ export function QuestionDetailPage() {
 
         <div className="mt-6">
           <h2 className="mb-2 text-sm font-medium text-gray-300">Explanation</h2>
-          <p className="leading-relaxed text-gray-400">{question.explanation}</p>
+          <p className="leading-relaxed break-words text-gray-400">{question.explanation}</p>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-3 border-t border-border-subtle pt-6">
