@@ -22,7 +22,7 @@ export function QuestionCard({ question }: { question: Question }) {
             type="button"
             onClick={() => toggleBookmarked(question.id)}
             aria-label={bookmarked ? 'Remove bookmark' : 'Add bookmark'}
-            className="rounded p-1 text-gray-400 hover:bg-white/5 hover:text-amber-400"
+            className="rounded p-2 text-gray-400 hover:bg-white/5 hover:text-amber-400"
           >
             {bookmarked ? <BookmarkCheck size={18} className="text-amber-400" /> : <Bookmark size={18} />}
           </button>
@@ -30,7 +30,7 @@ export function QuestionCard({ question }: { question: Question }) {
             type="button"
             onClick={() => toggleCompleted(question.id)}
             aria-label={completed ? 'Mark as not completed' : 'Mark as completed'}
-            className="rounded p-1 text-gray-400 hover:bg-white/5 hover:text-emerald-400"
+            className="rounded p-2 text-gray-400 hover:bg-white/5 hover:text-emerald-400"
           >
             {completed ? <CheckCircle2 size={18} className="text-emerald-400" /> : <Circle size={18} />}
           </button>

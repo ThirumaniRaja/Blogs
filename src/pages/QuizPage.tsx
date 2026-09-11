@@ -1,12 +1,12 @@
-import { PartyPopper, RotateCcw, Sparkles } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { ArrowLeft, PartyPopper, RotateCcw, Sparkles } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
 import { useProgress } from '@/context/ProgressContext'
 import { questions } from '@/data/questions'
 import type { Difficulty, Question } from '@/types'
 import { QuizRunner } from '@/components/quiz/QuizRunner'
 
 const difficulties: Array<Difficulty | 'All'> = ['All', 'Easy', 'Medium', 'Hard']
-const sizeOptions = [5, 10, 15]
+const baseSizeOptions = [10, 25, 50]
 
 function shuffle<T>(arr: T[]): T[] {
   const copy = [...arr]
@@ -33,6 +33,18 @@ export function QuizPage() {
       questions.filter((q) => q.quiz && (difficulty === 'All' || q.difficulty === difficulty)),
     [difficulty],
   )
+
+  const sizeOptions = useMemo(() => {
+    const options = baseSizeOptions.filter((n) => n < pool.length)
+    options.push(pool.length)
+    return Array.from(new Set(options)).filter((n) => n > 0)
+  }, [pool.length])
+
+  useEffect(() => {
+    if (!sizeOptions.includes(size)) {
+      setSize(sizeOptions[0] ?? 0)
+    }
+  }, [sizeOptions, size])
 
   const startQuiz = () => {
     const picked = shuffle(pool).slice(0, Math.min(size, pool.length))
@@ -132,7 +144,14 @@ export function QuizPage() {
   if (stage === 'active') {
     const question = quizQuestions[currentIndex]
     return (
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto flex max-w-2xl flex-col gap-4">
+        <button
+          type="button"
+          onClick={() => setStage('setup')}
+          className="flex w-fit items-center gap-1.5 text-sm text-gray-400 hover:text-gray-200"
+        >
+          <ArrowLeft size={16} /> Back to quiz setup
+        </button>
         <QuizRunner
           question={question}
           index={currentIndex}
